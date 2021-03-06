@@ -7,28 +7,50 @@ In this activity, you will work with a group to build a game using JavaScript an
 The completed application should meet the following criteria:
 
 * As a user, I want to start the game by clicking on a button. 
+  
+  Button in HTML. Linked function that starts the game
 
 * As a user, I want to try and guess a word by filling in a number of blanks that match the number of letters in that word.
 
+containers that get filled with correct letter guesses
+
 * As a user, I want the game to be timed. 
+
+Time interval function. Display a countdown.
 
 * As a user, I want to win the game when I have guessed all the letters in the word.
 
+If (if-else) guess word before countdown ends than increase the winning score by 1
+
 * As a user, I want to lose the game when the timer runs out before I have guessed all the letters.
 
+If can't guess word before countdown ends, increase loses by 1
+
 * As a user, I want to see my total wins and losses on the screen. 
+
+HTML/CSS prompt user with game stats per round
 
 ### Specifications
 
 * When a user presses a letter key, the user's guess should be captured as a key event.
 
-* When a user correctly guesses a letter, the corresponding blank "_" should be replaced by the letter. For example, if the user correctly selects "a", then "a _ _ a _" should appear. 
+JS function for keypress (event-listener-keypress) 
+
+* When a user correctly guesses a letter, the corresponding blank "_" should be replaced by the letter. For example, if the user correctly selects "a", then "a _ _ a _" should appear.
+
+JS if-else check keypress against letters in word, display letter if correct guess
 
 * When a user wins or loses a game, a message should appear and the timer should stop. 
 
+prompt
+
 * When a user clicks the start button, the timer should reset. 
 
+JS click-event on start button to reset the timer 
+
 * When a user refreshes or returns to the brower page, the win and loss counts should persist.
+
+JS use LocalStorage to save scores (wins and losses)
 
 ## 💡 Notes
 
