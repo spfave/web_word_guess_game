@@ -51,7 +51,11 @@ function selectWord() {
   roundWord = randomChoice(gameWords).split("");
   guessWord = roundWord.map((c) => "_");
 
-  wordChars.textContent = guessWord.join(" ");
+  renderGuessWord(guessWord);
+}
+
+function renderGuessWord(word) {
+  wordChars.textContent = word.join(" ");
 }
 
 function startTimer(countDownTime) {
@@ -70,6 +74,18 @@ function startTimer(countDownTime) {
   }, 1000);
 }
 
+function checkCharacterGuess(letter) {
+  if (roundWord.includes(letter)) {
+    for (const [i, char] of roundWord.entries()) {
+      if (char === letter) {
+        guessWord[i] = letter;
+      }
+    }
+
+    renderGuessWord(guessWord);
+  }
+}
+
 // Event Listeners
 btnStart.addEventListener("click", () => {
   startRound();
@@ -79,7 +95,7 @@ document.addEventListener("keyup", (event) => {
   const key = event.key.toLowerCase();
   if (letters.includes(key)) {
     console.log(key);
-    // checkCharacterGuess(key);
+    checkCharacterGuess(key);
   }
 });
 
