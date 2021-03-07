@@ -7,7 +7,8 @@ numLosses = document.getElementById("num-losses");
 
 // Variables
 // let isRound = false;
-const roundTime = 3; // seconds
+let isWin = false;
+const roundTime = 13; // seconds
 const gameWords = [
   "variable",
   "array",
@@ -43,6 +44,8 @@ function renderGameStats() {
 }
 
 function startRound() {
+  isWin = false;
+  // btnStart.disabled = true;
   selectWord();
   startTimer(roundTime);
 }
@@ -67,9 +70,14 @@ function startTimer(countDownTime) {
 
     if (timeRemaining > 0) {
       timer.textContent = timeRemaining;
+      if (isWin) {
+        clearInterval(roundTimer);
+        // roundWon();
+      }
     } else {
       timer.textContent = timeRemaining;
       clearInterval(roundTimer);
+      // roundLost();
     }
   }, 1000);
 }
@@ -83,6 +91,13 @@ function checkCharacterGuess(letter) {
     }
 
     renderGuessWord(guessWord);
+    checkWordGuess();
+  }
+}
+
+function checkWordGuess() {
+  if (roundWord.join("") === guessWord.join("")) {
+    isWin = true;
   }
 }
 
@@ -94,7 +109,6 @@ btnStart.addEventListener("click", () => {
 document.addEventListener("keyup", (event) => {
   const key = event.key.toLowerCase();
   if (letters.includes(key)) {
-    console.log(key);
     checkCharacterGuess(key);
   }
 });
