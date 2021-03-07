@@ -39,7 +39,9 @@ function getGameStats() {
   }
 }
 
-// function setGameStats() {}
+function setGameStats() {
+  localStorage.setItem("gameStats", JSON.stringify(gameStats));
+}
 
 // function resetGameStats() {}
 
@@ -90,13 +92,13 @@ function startTimer(countDownTime) {
 function roundWon() {
   gameStats.wins++;
   renderGameStats();
-  // setGameStats();
+  setGameStats();
 }
 
 function roundLost() {
   gameStats.losses++;
   renderGameStats();
-  // setGameStats();
+  setGameStats();
 }
 
 function checkCharacterGuess(letter) {
