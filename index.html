@@ -6,39 +6,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Word Guess Game</title>
+    <!-- Bootstrap -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <!-- CSS -->
     <link rel="stylesheet" href="./assets/style/style.css">
 </head>
 
 <body>
     <!-- Header -->
-    <header>
-        <h1>Word Guess Game</h1>
+    <header class="container-fluid p-3">
+        <h1>Word Guessing Game</h1>
     </header>
 
     <main>
         <!-- Timer -->
-        <section class="card">
+        <section class="timer-card card">
             <h2>Time Remaining</h2>
-            <p><span id="round-timer">0:00</span></p>
+            <p><span id="round-timer">0</span> seconds</p>
         </section>
 
         <!-- Word -->
-        <section class="card">
-            <div class="word-card">
-                <span id="word-characters">_ _ _</span>
+        <section class="word-card card pt-0">
+            <div class="py-5">
+                <span id="word-characters">Guess a Word</span>
             </div>
-            <button id="btn-start">Start Round</button>
+            <div>
+                <button id="btn-start" type="button" class="btn btn-primary btn-lg">Start Round</button>
+            </div>
         </section>
 
         <!-- Game Stats -->
-        <section class="card">
-            <h2>Score</h2>
-            <div class="scores">
+        <section class="score-card card">
+            <h2 class="pb-2">Score</h2>
+            <div class="scores d-flex justify-content-center py-2">
                 <p class="score">Wins: <span id="num-wins">0</span></p>
                 <p class="score">Losses: <span id="num-losses">0</span></p>
             </div>
-            <button id="btn-reset">Reset Score</button>
+            <div class="pt-2">
+                <button id="btn-reset" type="button" class="btn btn-outline-secondary">Reset Score</button>
+            </div>
         </section>
     </main>
 

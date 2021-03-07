@@ -47,6 +47,9 @@ function setGameStats() {
 function resetGameStats() {
   gameStats = { wins: 0, losses: 0 };
   renderGameStats();
+  timer.textContent = "0";
+  timer.style.color = "#333";
+  wordChars.textContent = "Guess a Word";
 }
 
 function renderGameStats() {
@@ -58,6 +61,8 @@ function renderGameStats() {
 function startRound() {
   isWin = false;
   btnStart.disabled = true;
+  btnReset.disabled = true;
+  timer.style.color = "#333";
   selectWord();
   startTimer(roundTime);
 }
@@ -81,6 +86,9 @@ function startTimer(countDownTime) {
     timeRemaining--;
 
     if (timeRemaining > 0) {
+      if (timeRemaining === 3) {
+        timer.style.color = "red";
+      }
       timer.textContent = timeRemaining;
       if (isWin) {
         clearInterval(roundTimer);
@@ -95,8 +103,9 @@ function startTimer(countDownTime) {
 }
 
 function roundWon() {
-  wordChars.textContent = "You Got the W! 🏆";
+  wordChars.textContent = "You Got the W! 🎉";
   btnStart.disabled = false;
+  btnReset.disabled = false;
   gameStats.wins++;
   renderGameStats();
 }
@@ -104,6 +113,7 @@ function roundWon() {
 function roundLost() {
   wordChars.textContent = "Better luck next time";
   btnStart.disabled = false;
+  btnReset.disabled = false;
   gameStats.losses++;
   renderGameStats();
 }
