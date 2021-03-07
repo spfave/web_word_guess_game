@@ -17,6 +17,8 @@ const gameWords = [
   "boolean",
 ];
 let gameStats = {};
+let roundWord = "";
+let guessWord = "";
 
 // Functions
 function init() {
@@ -45,12 +47,16 @@ function startRound() {
 }
 
 function selectWord() {
-  roundWord = randomChoice(gameWords);
+  roundWord = randomChoice(gameWords).split("");
+  guessWord = roundWord.map((c) => "_");
   console.log(roundWord);
+  console.log(guessWord);
+
+  // renderGuessWord(guessWord);
 }
 
 function startTimer(countDownTime) {
-  let timeRemaining = roundTime;
+  let timeRemaining = countDownTime;
   timer.textContent = timeRemaining;
 
   const roundTimer = setInterval(() => {
@@ -60,7 +66,7 @@ function startTimer(countDownTime) {
       timer.textContent = timeRemaining;
     } else {
       timer.textContent = timeRemaining;
-      clearInterval(roundTime);
+      clearInterval(roundTimer);
     }
   }, 1000);
 }
