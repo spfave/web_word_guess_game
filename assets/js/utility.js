@@ -1,3 +1,6 @@
+// Constants
+const letters = "abcdefghijklmnopqrstuvwxyz";
+
 // Functions
 function randomChoice(array) {
   // Return random choice from input array

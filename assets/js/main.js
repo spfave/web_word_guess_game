@@ -75,5 +75,13 @@ btnStart.addEventListener("click", () => {
   startRound();
 });
 
+document.addEventListener("keyup", (event) => {
+  const key = event.key.toLowerCase();
+  if (letters.includes(key)) {
+    console.log(key);
+    // checkCharacterGuess(key);
+  }
+});
+
 // Website Execution
 init();
