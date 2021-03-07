@@ -58,11 +58,15 @@ function renderGameStats() {
   setGameStats();
 }
 
+function setButtonStatus(state) {
+  btnStart.disabled = state;
+  btnReset.disabled = state;
+}
+
 function startRound() {
   isWin = false;
-  btnStart.disabled = true;
-  btnReset.disabled = true;
   timer.style.color = "#333";
+  setButtonStatus(true);
   selectWord();
   startTimer(roundTime);
 }
@@ -70,7 +74,6 @@ function startRound() {
 function selectWord() {
   roundWord = randomChoice(gameWords).split("");
   guessWord = roundWord.map((c) => "_");
-
   renderGuessWord(guessWord);
 }
 
@@ -104,17 +107,15 @@ function startTimer(countDownTime) {
 
 function roundWon() {
   wordChars.textContent = "You Got the W! 🎉";
-  btnStart.disabled = false;
-  btnReset.disabled = false;
   gameStats.wins++;
+  setButtonStatus(false);
   renderGameStats();
 }
 
 function roundLost() {
   wordChars.textContent = "Better luck next time";
-  btnStart.disabled = false;
-  btnReset.disabled = false;
   gameStats.losses++;
+  setButtonStatus(false);
   renderGameStats();
 }
 
