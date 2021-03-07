@@ -1,15 +1,15 @@
 // DOM selectors
-timer = document.getElementById("round-timer");
-wordChars = document.getElementById("word-characters");
-btnStart = document.getElementById("btn-start");
-btnReset = document.getElementById("btn-reset");
-numWins = document.getElementById("num-wins");
-numLosses = document.getElementById("num-losses");
+const timer = document.getElementById("round-timer");
+const wordChars = document.getElementById("word-characters");
+const btnStart = document.getElementById("btn-start");
+const btnReset = document.getElementById("btn-reset");
+const numWins = document.getElementById("num-wins");
+const numLosses = document.getElementById("num-losses");
 
 // Variables
 // let isRound = false;
 let isWin = false;
-const roundTime = 5; // seconds
+const roundTime = 10; // seconds
 const gameWords = [
   "variable",
   "array",
@@ -22,6 +22,7 @@ const gameWords = [
 let gameStats = {};
 let roundWord = "";
 let guessWord = "";
+let timeRemaining;
 
 // Functions
 function init() {
@@ -46,17 +47,17 @@ function setGameStats() {
 function resetGameStats() {
   gameStats = { wins: 0, losses: 0 };
   renderGameStats();
-  setGameStats();
 }
 
 function renderGameStats() {
   numWins.textContent = gameStats.wins;
   numLosses.textContent = gameStats.losses;
+  setGameStats();
 }
 
 function startRound() {
   isWin = false;
-  // btnStart.disabled = true;
+  btnStart.disabled = true;
   selectWord();
   startTimer(roundTime);
 }
@@ -73,7 +74,7 @@ function renderGuessWord(word) {
 }
 
 function startTimer(countDownTime) {
-  let timeRemaining = countDownTime;
+  timeRemaining = countDownTime;
   timer.textContent = timeRemaining;
 
   const roundTimer = setInterval(() => {
@@ -94,18 +95,24 @@ function startTimer(countDownTime) {
 }
 
 function roundWon() {
+  wordChars.textContent = "You Got the W! 🏆";
+  btnStart.disabled = false;
   gameStats.wins++;
   renderGameStats();
-  setGameStats();
 }
 
 function roundLost() {
+  wordChars.textContent = "Better luck next time";
+  btnStart.disabled = false;
   gameStats.losses++;
   renderGameStats();
-  setGameStats();
 }
 
 function checkCharacterGuess(letter) {
+  if (!timeRemaining) {
+    return;
+  }
+
   if (roundWord.includes(letter)) {
     for (const [i, char] of roundWord.entries()) {
       if (char === letter) {
