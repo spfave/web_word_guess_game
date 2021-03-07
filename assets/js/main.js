@@ -5,7 +5,17 @@ numWins = document.getElementById("num-wins");
 numLosses = document.getElementById("num-losses");
 
 // Variables
+// let isRound = false;
 const roundTime = 3; // seconds
+const gameWords = [
+  "variable",
+  "array",
+  "modulus",
+  "object",
+  "function",
+  "string",
+  "boolean",
+];
 let gameStats = {};
 
 // Functions
@@ -30,7 +40,13 @@ function renderGameStats() {
 }
 
 function startRound() {
+  selectWord();
   startTimer(roundTime);
+}
+
+function selectWord() {
+  roundWord = randomChoice(gameWords);
+  console.log(roundWord);
 }
 
 function startTimer(countDownTime) {
