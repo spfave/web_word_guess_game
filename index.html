@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Word Guess Game</title>
     <!-- CSS -->
-    <link rel="stylesheet" href="assets/style/style.css">
+    <link rel="stylesheet" href="./assets/style/style.css">
 </head>
 
 <body>
@@ -20,7 +20,7 @@
         <!-- Timer -->
         <section class="card">
             <h2>Time Remaining</h2>
-            <p><span>0:00</span></p>
+            <p><span id="round-timer">0:00</span></p>
         </section>
 
         <!-- Word -->
@@ -28,7 +28,7 @@
             <div class="word-card">
                 <span id="word">_ _ _</span>
             </div>
-            <button>Start Round</button>
+            <button id="btn-start">Start Round</button>
         </section>
 
         <!-- Game Stats -->
@@ -43,7 +43,7 @@
     </main>
 
     <!-- JavaScript -->
-    <script src="main.js"></script>
+    <script src="./assets/js/main.js"></script>
 </body>
 
 </html>
