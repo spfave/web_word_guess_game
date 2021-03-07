@@ -1,0 +1,9 @@
+/* Reset */
+* {
+  box-sizing: border-box;
+}
+
+/* Tags */
+body {
+  text-align: center;
+}
