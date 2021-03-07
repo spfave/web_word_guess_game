@@ -2,7 +2,7 @@
 timer = document.getElementById("round-timer");
 wordChars = document.getElementById("word-characters");
 btnStart = document.getElementById("btn-start");
-// btnReset = document.getElementById("btn-reset");
+btnReset = document.getElementById("btn-reset");
 numWins = document.getElementById("num-wins");
 numLosses = document.getElementById("num-losses");
 
@@ -43,7 +43,11 @@ function setGameStats() {
   localStorage.setItem("gameStats", JSON.stringify(gameStats));
 }
 
-// function resetGameStats() {}
+function resetGameStats() {
+  gameStats = { wins: 0, losses: 0 };
+  renderGameStats();
+  setGameStats();
+}
 
 function renderGameStats() {
   numWins.textContent = gameStats.wins;
@@ -123,6 +127,10 @@ function checkWordGuess() {
 // Event Listeners
 btnStart.addEventListener("click", () => {
   startRound();
+});
+
+btnReset.addEventListener("click", () => {
+  resetGameStats();
 });
 
 document.addEventListener("keyup", (event) => {
