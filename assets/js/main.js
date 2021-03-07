@@ -1,6 +1,7 @@
 // DOM selectors
-btnStart = document.getElementById("btn-start");
 timer = document.getElementById("round-timer");
+wordChars = document.getElementById("word-characters");
+btnStart = document.getElementById("btn-start");
 numWins = document.getElementById("num-wins");
 numLosses = document.getElementById("num-losses");
 
@@ -49,10 +50,8 @@ function startRound() {
 function selectWord() {
   roundWord = randomChoice(gameWords).split("");
   guessWord = roundWord.map((c) => "_");
-  console.log(roundWord);
-  console.log(guessWord);
 
-  // renderGuessWord(guessWord);
+  wordChars.textContent = guessWord.join(" ");
 }
 
 function startTimer(countDownTime) {
